@@ -7,7 +7,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'athena_health', '~> 0.8.3'
 gem 'font-awesome-rails'
 gem 'gretel'
 gem 'twilio-ruby'
@@ -75,14 +74,9 @@ end
 gem 'alexa_verifier'
 gem 'alexa_rubykit'
 
-# alchemy
-gem 'alchemy-api-rb', require: 'alchemy_api'
-
 # charts
 gem 'chartjs-ror'
 
 gem 'sidekiq', branch: 'rails5'
 gem 'sidekiq-failures'
 gem 'sinatra', github: 'sinatra/sinatra'
-
-gem 'uber-ruby', require: 'uber'

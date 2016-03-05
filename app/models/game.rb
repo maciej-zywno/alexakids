@@ -1,8 +1,5 @@
 class Game < ActiveRecord::Base
-  self.table_name = "games"
-
-  belongs_to :patient, class_name: 'User', foreign_key: 'patient_id'
-  belongs_to :doctor,  class_name: 'User', foreign_key: 'doctor_id'
+  belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   has_many :questions
   has_many :answers, through: :questions

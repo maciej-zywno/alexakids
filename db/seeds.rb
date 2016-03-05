@@ -6,46 +6,45 @@ admin = User.find_or_create_by!(email: 'admin@athena-poc.com') do |user|
   user.role = :admin
 end
 
-# Create patient user
-patient = User.find_or_create_by!(email: 'patient@athena-poc.com') do |user|
-  user.name = 'Patient user'
+# Create player user
+player = User.find_or_create_by!(email: 'player@athena-poc.com') do |user|
+  user.name = 'Player user'
   user.password = 'abcd1234'
   user.password_confirmation = 'abcd1234'
-  user.role = :patient
+  user.role = :player
 end
 
-# Create doctor user
-doctor = User.find_or_create_by!(email: 'doctor@athena-poc.com') do |user|
+# Create owner user
+owner = User.find_or_create_by!(email: 'owner@athena-poc.com') do |user|
   user.name = 'Doctor user'
   user.password = 'abcd1234'
   user.password_confirmation = 'abcd1234'
-  user.role = :doctor
+  user.role = :owner
 end
 
-# Create treatment
-treatment = Game.where(
+# Create game
+game = Game.where(
   problem: 'Back problem',
-  doctor_id: doctor.id,
-  patient_id: patient.id
+  owner_id: owner.id,
 ).first_or_create
 
-#Create treatment questions
+#Create game questions
 QUESTION_1 = 'On a scale from 1 to 10 how bad is your back today?'
 QUESTION_2 = 'Could you tell more details about your feelings?'
 QUESTION_3 = 'On a scale from 1 to 10 how was your sleep last night?'
 
-question_1 = treatment.questions.find_or_create_by(question: QUESTION_1) do |q|
+question_1 = game.questions.find_or_create_by(question: QUESTION_1) do |q|
   q.low_threshold = 3,
   q.high_threshold = 8,
   q.number!
 end
 
-question_2 = treatment.questions.find_or_create_by(question: QUESTION_2) do |q|
+question_2 = game.questions.find_or_create_by(question: QUESTION_2) do |q|
   q.risky_keywords = ['a lot', 'hurts', 'bad']
   q.string!
 end
 
-question_3 = treatment.questions.find_or_create_by(question: QUESTION_3) do |q|
+question_3 = game.questions.find_or_create_by(question: QUESTION_3) do |q|
   q.low_threshold =  2,
   q.high_threshold =  7,
   q.number!

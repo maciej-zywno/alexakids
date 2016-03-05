@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = @game.questions.build(risky_keywords_as_array(question_params))
+    @question = @game.questions.build(question_params)
     authorize @question
 
     if @question.save
@@ -30,8 +30,7 @@ class QuestionsController < ApplicationController
   def update
     authorize @question
 
-    @question.risky_keywords_will_change!
-    if @question.update(risky_keywords_as_array(question_params))
+    if @question.update(question_params)
       redirect_to game_questions_path(@game), success: 'Question updated succesfully'
     else
       render :edit
@@ -56,14 +55,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:question, :answer_type, :low_threshold, :high_threshold, :risky_keywords)
+    params.require(:question).permit(:question, :answer_type)
   end
 
-  def risky_keywords_as_array(question_params)
-    question_params.merge(risky_keywords: to_array(question_params['risky_keywords']))
-  end
-
-  def to_array(risky_keywords_as_string)
-    [""]#risky_keywords_as_string.split(',').map(&:strip)
-  end
 end
