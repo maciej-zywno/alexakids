@@ -6,25 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   rescue_from Exception do |e|
-    if /AthenaHealth/.match(e.class.to_s)
-      code = AthenaHealth::Error::ERROR_TYPES.key(e.class)
-      redirect_to "/#{code}.html"
-    else
-      raise e
-    end
+    raise e
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :render_unathorized_error
 
   private
-
-  def athena_health_client
-    @client ||= AthenaHealth::Client.new(
-      version: 'preview1',
-      key: current_user.athena_health_key,
-      secret: current_user.athena_health_secret
-    )
-  end
 
   def render_unathorized_error
     redirect_to '/401.html'

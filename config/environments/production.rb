@@ -65,7 +65,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "athena_poc_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "alexa_kids_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -101,6 +101,6 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_cable.url = 'wss://athena-poc.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://athena-poc.herokuapp.com', /http:\/\/athena-poc.herokuapp.*/ ]
+  config.action_cable.url = 'wss://alexakids.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://alexakids.herokuapp.com', /http:\/\/alexakids.herokuapp.*/ ]
 end

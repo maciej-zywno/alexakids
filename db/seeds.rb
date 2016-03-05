@@ -1,5 +1,5 @@
 # Create admin user
-admin = User.find_or_create_by!(email: 'admin@athena-poc.com') do |user|
+admin = User.find_or_create_by!(email: 'admin@alexakids.com') do |user|
   user.name = 'Admin user'
   user.password = 'abcd1234'
   user.password_confirmation = 'abcd1234'
@@ -7,7 +7,7 @@ admin = User.find_or_create_by!(email: 'admin@athena-poc.com') do |user|
 end
 
 # Create player user
-player = User.find_or_create_by!(email: 'player@athena-poc.com') do |user|
+player = User.find_or_create_by!(email: 'player@alexakids.com') do |user|
   user.name = 'Player user'
   user.password = 'abcd1234'
   user.password_confirmation = 'abcd1234'
@@ -15,7 +15,7 @@ player = User.find_or_create_by!(email: 'player@athena-poc.com') do |user|
 end
 
 # Create owner user
-owner = User.find_or_create_by!(email: 'owner@athena-poc.com') do |user|
+owner = User.find_or_create_by!(email: 'owner@alexakids.com') do |user|
   user.name = 'Doctor user'
   user.password = 'abcd1234'
   user.password_confirmation = 'abcd1234'

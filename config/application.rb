@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module AthenaPoc
+module AlexaKids
   class Application < Rails::Application
 
     config.generators do |g|
@@ -32,7 +32,7 @@ module AthenaPoc
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.autoload_paths += %W(#{config.root}/lib/athena)
+    config.autoload_paths += %W(#{config.root}/lib/)
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
