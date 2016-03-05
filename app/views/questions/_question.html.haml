@@ -1,0 +1,19 @@
+%tr{'data-link': game_question_path(@game, question)}
+  %td
+    = question.id
+  %td
+    = question.question
+  %td
+    = question.answer_type.humanize
+  -#%td
+  -#  = question.risky_keywords
+  %td
+    = question.low_threshold
+  %td
+    = question.high_threshold
+  %td
+    - if policy(question).edit?
+      = link_to 'Edit', edit_game_question_path(@game, question), class: 'btn-sm btn-primary'
+    - if policy(question).destroy?
+      = link_to 'Delete', game_question_path(@game, question), method: :delete, class: 'btn-sm btn-danger'
+

@@ -1,0 +1,8 @@
+= content_for :header_title do
+  = "#{@game.name} - New Question"
+
+- breadcrumb :new_question, @game.id
+
+.row
+  .col-md-4
+    = render 'form'

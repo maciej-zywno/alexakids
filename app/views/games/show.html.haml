@@ -1,0 +1,20 @@
+= content_for :header_title do
+  = @game.name
+
+- breadcrumb :game, @game.id
+
+= link_to game_questions_path(params[:id]) do
+  = render 'shared/resource_panel', title: 'Questions', description: 'List of game questions', icon_class: 'fa-4x pe-7s-portfolio', icon_class: 'fa fa-question-circle fa-4x'
+
+/ %table.table.table-striped
+/   %thead
+/     %tr
+/       %th ID
+/       %th Date
+/       %th Question
+/       %th Answer
+/       %th Alchemy - Keywords
+/       %th Alchemy - Sentiment
+/   %tbody
+/     - @treatment.answers.each do |answer|
+/       = render 'answers/answer', answer: answer

@@ -1,0 +1,17 @@
+%tr
+  %td
+    = provider.providerid
+  %td
+    = provider.firstname
+  %td
+    = provider.lastname
+  %td
+    = provider.homedepartment
+  %td
+    = provider.specialty
+  %td
+    = provider.entitytype
+  %td
+    - unless User.find_by_athena_provider_id(provider.providerid)
+      = link_to 'Invite', "#", data: { toggle: 'modal', target: "#invite-provider-#{provider.providerid}" }, class: 'btn-sm btn-primary'
+      = render 'invite_provider_modal', provider_id: provider.providerid

@@ -1,0 +1,24 @@
+= content_for :header_title do
+  Games
+
+- breadcrumb :games
+
+- if @games.any?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th ID
+        %th Kid
+        %th Parent
+        %th Name
+    %tbody
+      = render @games
+
+  .pagination_links
+    = paginate @games
+- else
+  = render 'shared/no_records', text: "You didn't have any associated games."
+
+%br/
+- if policy(current_user.games.build).new?
+  = link_to 'New Game', new_game_path, class: 'btn btn-primary'
